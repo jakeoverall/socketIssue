@@ -18,7 +18,7 @@ export default {
     })
 
     onUnmounted(() => {
-      socketService.emit('t1:left')
+      socketService.emit('t1:leave')
     })
 
     return {

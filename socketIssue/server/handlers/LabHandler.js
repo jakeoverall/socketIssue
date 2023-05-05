@@ -18,8 +18,8 @@ export class LabHandler extends SocketHandler {
     socketProvider.messageRoom('lab', 'joined', this.profile)
   }
   async labLeave(){
-    this.socket.leave('lab')
     socketProvider.messageRoom('lab', 'left', this.profile)
+    this.socket.leave('lab')
   }
 
 }

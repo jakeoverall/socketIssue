@@ -6,6 +6,6 @@ export class LabHandler {
   }
 
   static leave() {
-    socketService.emit('lab:join')
+    socketService.emit('lab:leave')
   }
 }

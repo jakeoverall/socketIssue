@@ -19,8 +19,8 @@ export class TestHandler extends SocketHandler {
     socketProvider.messageRoom('t1', 'joined', this.profile)
   }
   async t1Leave(){
-    this.socket.leave('t1')
     socketProvider.messageRoom('t1', 'left', this.profile)
+    this.socket.leave('t1')
   }
 
   async testEvent(payload) {

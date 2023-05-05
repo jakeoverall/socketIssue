@@ -14,18 +14,18 @@ const SOCKET_EVENTS = {
 
 let globalSender = null
 
-function emitAll(event, payload) {
+function globalSendAllSockets(event, payload) {
   if (!globalSender) {
     return console.error('[☠️ YOU DID NOT ENABLE THE globalSender]')
   }
   globalSender.emit(event, payload)
 }
 
-function globalTo(to, event, payload) {
+function globalMessageRoom(room, event, payload) {
   if (!globalSender) {
     return console.error('[☠️ YOU DID NOT ENABLE THE globalSender]')
   }
-  globalSender.to(to).emit(event, payload)
+  globalSender.to(room).emit(event, payload)
 }
 
 
@@ -82,7 +82,7 @@ class SocketProvider {
    * @param {any} payload
    */
   messageRoom(room, eventName, payload) {
-    globalTo(room, eventName, payload)
+    globalMessageRoom(room, eventName, payload)
     // this.io.to(room).emit(eventName, payload)
   }
 
@@ -92,7 +92,7 @@ class SocketProvider {
    * @param {any} payload
    */
   message(eventName, payload) {
-    emitAll(eventName, payload)
+    globalSendAllSockets(eventName, payload)
     // this.io.emit(eventName, payload)
   }
 }
